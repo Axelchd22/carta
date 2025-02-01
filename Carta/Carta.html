@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta para Mi Amor</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffefef;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Flores decorativas */
+        .flower {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: pink;
+            border-radius: 50%;
+            top: 10%;
+            left: 50%;
+            animation: float 3s infinite alternate ease-in-out;
+        }
+
+        .flower::before, .flower::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: pink;
+            border-radius: 50%;
+        }
+
+        .flower::before {
+            top: -15px;
+            left: -15px;
+        }
+
+        .flower::after {
+            top: -15px;
+            left: 15px;
+        }
+
+        .flower:nth-child(2) {
+            left: 30%;
+            top: 15%;
+            animation-delay: 0.5s;
+        }
+
+        .flower:nth-child(3) {
+            left: 70%;
+            top: 20%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Corazones animados */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            opacity: 0.7;
+            animation: floatHearts 4s infinite ease-in-out;
+        }
+
+        .heart:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 80%; top: 30%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 50%; top: 10%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 20%; top: 70%; animation-delay: 3s; }
+        .heart:nth-child(5) { left: 90%; top: 50%; animation-delay: 2.5s; }
+        .heart:nth-child(6) { left: 40%; top: 80%; animation-delay: 1.5s; }
+
+        @keyframes floatHearts {
+            0% { transform: translateY(0) scale(1); opacity: 0.7; }
+            50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.7; }
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .card.open {
+            transform: rotateY(180deg);
+        }
+
+        .front, .inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff4d4d;
+            border-radius: 10px;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            flex-direction: column;
+        }
+
+        .inside {
+            background: white;
+            color: #ff4d4d;
+            transform: rotateY(180deg);
+            padding: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+            font-weight: normal;
+        }
+
+        .text-heart {
+            font-size: 24px;
+            margin-top: 10px;
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Flores decorativas -->
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+
+    <!-- Corazones flotantes -->
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+
+    <div class="container">
+        <div class="card" id="card">
+            <div class="front">
+                <p>Toca para abrir ❤️</p>
+            </div>
+            <div class="inside">
+                <p><strong>Mi amor,</strong></p>
+                <p>Cada día contigo es un regalo, y en este San Valentín quiero preguntarte algo especial…</p>
+                <p><strong>💖 ¿Quieres ser mi San Valentín? 💖</strong></p>
+                <p>No solo en ese día, sino siempre, porque mi corazón es tuyo.</p>
+                <p class="text-heart">❤️ Te amo muchísimo ❤️</p>
+                <p><strong>Axel</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('card').addEventListener('click', function() {
+            this.classList.toggle('open');
+        });
+    </script>
+
+</body>
+</html>
+
+
+
